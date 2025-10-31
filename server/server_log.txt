@@ -1,0 +1,3 @@
+[2244] 31 Oct 12:19:14.749 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 2244 ready to start.
+[2244] 31 Oct 12:19:14.750 # Server started, Redis version 3.2.100
+[2244] 31 Oct 12:19:14.751 * The server is now ready to accept connections on port 6379

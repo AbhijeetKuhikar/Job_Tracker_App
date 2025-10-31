@@ -4,7 +4,7 @@ import cors from "cors"
 import "./database/conn.js"
 
 import { userRouter } from "./routers/userRouter.js"
-// import { companyRouter } from "./routers/companyRouter.js"
+import { companyRouter } from "./routers/companyRoutes.js"
 // import { adminRouter } from "./routers/adminRouter.js"
 
 dotenv.config({ path: "./config.env" })
@@ -26,7 +26,7 @@ app.use(cors(corsOptions))
 
 app.use("/user", userRouter)//routers
 
-// app.use("/company", companyRouter)
+app.use("/company", companyRouter)
 // app.use("/admin", adminRouter)
 // handle 404 route
 app.use((req, res) => {
