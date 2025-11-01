@@ -4,7 +4,7 @@ import cors from "cors"
 import "./database/conn.js"
 
 import { userRouter } from "./routers/userRouter.js"
-import { companyRouter } from "./routers/companyRoutes.js"
+// import { companyRouter } from "./routers/companyRouter.js"
 // import { adminRouter } from "./routers/adminRouter.js"
 
 dotenv.config({ path: "./config.env" })
@@ -17,17 +17,21 @@ app.use(express.static("public"))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-let corsOptions = {
-    origin: "*",
-    method: " *"
-}
+const corsOptions = {
+  origin: "*",  // your React dev URL
+  methods: "*",
+};
 
 app.use(cors(corsOptions))
 
-app.use("/user", userRouter)//routers
+// routers
 
-app.use("/company", companyRouter)
+app.use("/user", userRouter)
+
+// app.use("/company", companyRouter)
+
 // app.use("/admin", adminRouter)
+
 // handle 404 route
 app.use((req, res) => {
     console.log("user trying to access invalid route !")
