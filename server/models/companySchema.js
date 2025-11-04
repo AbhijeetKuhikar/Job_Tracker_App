@@ -1,73 +1,87 @@
 import mongoose from "mongoose";
-import bcrypt from "bcrypt";
 
-let addressObject = {
-    street: "", city: "", state: "", country: "", pincode: ""
+// Sub-documents
+const addressSchema = {
+    street: { type: String, default: "" },
+    city: { type: String, default: "" },
+    state: { type: String, default: "" },
+    country: { type: String, default: "" },
+    pincode: { type: String, default: "" },
 };
 
-let emailObject = {
-    companyEmail: "", verified: false
+const emailSchema = {
+    userEmail: { type: String, required: true },
+    verified: { type: Boolean, default: false },
 };
+
+const contactPersonScheam = {
+    name: { type: String, required: true },
+    phone: { type: String, required: true },
+    email: { type: String, required: true },
+    position: { type: String, required: true }
+}
+
+const companyDetailsSchema = {
+    name: { type: String, required: true },
+    est_year: { type: String, required: true },
+    address: { type: Object, default: addressSchema },
+    bio: { type: String, required: true },
+    website: { type: String, required: false },
+    industryType: { type: String, required: true },
+    founders: { type: Array },
+    hrEmail: { type: String, required: true }
+}
 
 let companySchema = mongoose.Schema({
-    companyName: {
-        type: String,
-        required: true
+    companyDetails: {
+        type: Object,
+        required: true,
+        default: companyDetailsSchema
+    },
+    contact_person: {
+        type: Object,
+        required: true,
+        default: contactPersonScheam
     },
     email: {
         type: Object,
         required: true,
-        default: emailObject
-    },
-    password: {
-        type: String,
-        required: true
+        default: emailSchema
     },
     phone: {
         type: String,
         required: true
     },
-    address: {
-        type: Object,
-        required: true,
-        default: addressObject
-    },
-    description: {
+    companyLogo: {
         type: String,
-        default: ""
+        required: false
     },
-    postedJobs: {
+    documents: {
         type: Array,
         default: []
     },
-    verifiedJobs: {
+    createJobs: {
         type: Array,
         default: []
     },
-    timeStamp: {
-        type: Date,
-        default: Date.now()
+    password: {
+        type: String,
+        required: true
     }
-});
+})
 
-// Hash password before saving
+
+// Password hashing middleware
 companySchema.pre("save", async function (next) {
     try {
-        // Only hash if the password is new or modified
         if (!this.isModified("password")) return next();
-
-        console.log("Original company password:", this.password);
-
         this.password = await bcrypt.hash(this.password, 10);
-
-        console.log("Company password hashed successfully!");
         next();
     } catch (err) {
-        console.log("Error in company pre-save hook:", err);
         next(err);
     }
 });
 
-let companyModel = new mongoose.model("companies", companySchema);
+let companyModel = new mongoose.model("companies", companySchema)
 
-export { companyModel };
+export { companyModel }
