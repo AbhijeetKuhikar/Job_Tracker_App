@@ -22,9 +22,8 @@ function generateRandomNumber() {
     return Math.floor((Math.random() * 9000) + 1000).toString();
 }
 
-//-------------------------
 //  Send OTP (Register)
-//-------------------------
+
 async function sendOTP(email) {
     try {
         const otp = generateRandomNumber();
@@ -47,9 +46,7 @@ async function sendOTP(email) {
     }
 }
 
-//-------------------------
 //  Send OTP (Password Reset)
-//-------------------------
 async function sendOTPForPasswordReset(email) {
     try {
         const otp = generateRandomNumber();
@@ -72,16 +69,14 @@ async function sendOTPForPasswordReset(email) {
     }
 }
 
-//-------------------------
 //  Test Route
-//-------------------------
+
 const test = (req, res) => {
     res.status(200).json({ message: "Welcome to company test route!" });
 };
 
-//-------------------------
 //  Register Company
-//-------------------------
+
 const handleCompanyRegister = async (req, res) => {
     try {
         let { companyName, email, phone, address, description, password } = req.body;
@@ -117,9 +112,8 @@ const handleCompanyRegister = async (req, res) => {
     }
 };
 
-//-------------------------
 //  Verify Company OTP
-//-------------------------
+
 const handleCompanyOTPVerification = async (req, res) => {
     try {
         const { email, companyOtp } = req.body;
@@ -146,9 +140,8 @@ const handleCompanyOTPVerification = async (req, res) => {
     }
 };
 
-//-------------------------
 //  Company Login
-//-------------------------
+
 const handleCompanyLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -178,9 +171,8 @@ const handleCompanyLogin = async (req, res) => {
     }
 };
 
-//-------------------------
 //  Password Reset Request
-//-------------------------
+
 const handleCompanyPasswordResetRequest = async (req, res) => {
     try {
         const { email } = req.body;
@@ -203,9 +195,8 @@ const handleCompanyPasswordResetRequest = async (req, res) => {
     }
 };
 
-//-------------------------
 //  Verify OTP for Password Reset
-//-------------------------
+
 const handleCompanyOTPForPasswordReset = async (req, res) => {
     try {
         const { email, companyOtp, newPassword } = req.body;
@@ -234,9 +225,8 @@ const handleCompanyOTPForPasswordReset = async (req, res) => {
     }
 };
 
-//-------------------------
 //  Exports
-//-------------------------
+
 export {
     test,
     handleCompanyRegister,
