@@ -1,37 +1,16 @@
-import express from "express";
-import { 
-  createJob, 
-  getAllJobs, 
-  getJobById, 
-  updateJob, 
-  deleteJob, 
-  applyToJob, 
-  getApplicantsForJob 
-} from "../controllers/jobController.js";
-import { AuthUser } from "../middlewares/AuthUser.js";
-import { AuthCompany } from "../middlewares/AuthCompany.js";
+import express from "express"
 
-const jobRouter = express.Router();
+import { createJob, getJobData, handleJobAction, handleJobApplication } from "../controllers/jobController.js"
+import { AuthUser } from "../middlewares/AuthUser.js"
 
-// Company creates a new job
-jobRouter.post("/create", AuthCompany, createJob);
+const jobRouter = express.Router()
 
-// Get all jobs (public)
-jobRouter.get("/all", getAllJobs);
+jobRouter.post("/add-job", authCompany, createJob)
 
-// Get job by ID (public)
-jobRouter.get("/:job_id", getJobById);
+jobRouter.post("/job-action/:action/:jobId", authCompany, handleJobAction)
 
-// Company updates a job
-jobRouter.put("/update/:job_id", AuthCompany, updateJob);
+jobRouter.post("/apply-for-job/:jobId", AuthUser, handleJobApplication)
 
-// Company deletes a job
-jobRouter.delete("/delete/:job_id", AuthCompany, deleteJob);
+jobRouter.get("/get-jobs", getJobData)
 
-// User applies to a job
-jobRouter.post("/apply/:job_id", AuthUser, applyToJob);
-
-// Company views applicants
-jobRouter.get("/applicants/:job_id", AuthCompany, getApplicantsForJob);
-
-export { jobRouter };
+export { jobRouter }
