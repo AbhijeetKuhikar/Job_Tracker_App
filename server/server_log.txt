@@ -28,3 +28,8 @@
 [5640] 07 Nov 23:00:29.095 * Background saving started by pid 24696
 [5640] 07 Nov 23:00:29.205 # fork operation complete
 [5640] 07 Nov 23:00:29.213 * Background saving terminated with success
+[5640] 07 Nov 23:15:30.051 * 1 changes in 900 seconds. Saving...
+[5640] 07 Nov 23:15:30.058 * Background saving started by pid 24724
+[5640] 07 Nov 23:15:30.179 # fork operation complete
+[5640] 07 Nov 23:15:30.180 * Background saving terminated with success
+[5312] 07 Nov 23:20:08.584 # Creating Server TCP listening socket 127.0.0.1:6379: bind: No error

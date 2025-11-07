@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config({ path: "./config.env" });
 
-// ✅ Middleware to authenticate company using JWT
+//  Middleware to authenticate company using JWT
 export const authCompany = async (req, res, next) => {
     try {
         // Get token from Authorization header → "Bearer <token>"

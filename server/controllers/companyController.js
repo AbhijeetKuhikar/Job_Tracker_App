@@ -8,7 +8,7 @@ import bcrypt from "bcrypt";
 
 dotenv.config({ path: "./config.env" });
 
-// ✅ Setup transporter
+// Setup transporter
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -19,12 +19,12 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-// ✅ Generate OTP
+// Generate OTP
 function generateOTP() {
     return Math.floor(1000 + Math.random() * 9000).toString();
 }
 
-// ✅ Send OTP (generic)
+// Send OTP (generic)
 async function sendOTP(email, keyPrefix, subject) {
     try {
         const otp = generateOTP();
@@ -45,11 +45,11 @@ async function sendOTP(email, keyPrefix, subject) {
     }
 }
 
-// ✅ Test Route
+// Test Route
 const test = (req, res) => res.status(200).json({ message: "Company routes working fine!" });
 
-// ✅ Register Company
-// ✅ Register Company
+// Register Company
+// Register Company
 const handleCompanyRegister = async (req, res) => {
     try {
         const { companyDetails, contact_person, email, phone, password } = req.body;
@@ -92,7 +92,7 @@ const handleCompanyRegister = async (req, res) => {
 };
 
 
-// ✅ Verify Company OTP
+// Verify Company OTP
 const handleCompanyOTPVerification = async (req, res) => {
     try {
         const { email, companyOtp } = req.body;
@@ -118,7 +118,7 @@ const handleCompanyOTPVerification = async (req, res) => {
     }
 };
 
-// ✅ Login Company
+// Login Company
 const handleCompanyLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -148,7 +148,7 @@ const handleCompanyLogin = async (req, res) => {
     }
 };
 
-// ✅ Request Password Reset OTP
+// Request Password Reset OTP
 const handleCompanyPasswordResetRequest = async (req, res) => {
     try {
         const { email } = req.body;
@@ -170,7 +170,7 @@ const handleCompanyPasswordResetRequest = async (req, res) => {
     }
 };
 
-// ✅ Verify OTP & Reset Password
+// Verify OTP & Reset Password
 const handleCompanyOTPForPasswordReset = async (req, res) => {
     try {
         const { email, companyOtp, newPassword } = req.body;

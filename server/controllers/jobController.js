@@ -3,10 +3,10 @@ import { jobModel } from "../models/jobSchema.js";
 import { userModel } from "../models/userSchema.js";
 import mongoose from "mongoose";
 
-// ✅ Test route
+// Test route
 const test = (req, res) => res.status(200).json({ message: "Job routes working fine!" });
 
-// ✅ Create a Job
+// Create a Job
 const createJob = async (req, res) => {
     try {
         const { companyEmail } = req;
@@ -42,7 +42,7 @@ const createJob = async (req, res) => {
     }
 };
 
-// ✅ Handle Job Actions (Delete / Close)
+// Handle Job Actions (Delete / Close)
 const handleJobAction = async (req, res) => {
     try {
         const { companyEmail } = req;
@@ -85,7 +85,7 @@ const handleJobAction = async (req, res) => {
     }
 };
 
-// ✅ Apply for a Job (User)
+// Apply for a Job (User)
 const handleJobApplication = async (req, res) => {
     try {
         const { userEmail } = req;
@@ -113,7 +113,7 @@ const handleJobApplication = async (req, res) => {
     }
 };
 
-// ✅ Get All Jobs (with filters)
+// Get All Jobs (with filters)
 const getJobData = async (req, res) => {
     try {
         const filters = req.query || {};
