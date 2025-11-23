@@ -1,27 +1,11 @@
-import express from "express"
-import { test, handleUserRegister, handleOTPVerification, handleUserLogin, handleResetPasswordRequest, handleOTPForPasswordReset, handleUserFileUpload, fetchProfile } from "../controllers/userController.js"
-import { AuthUser } from "../middlewares/AuthUser.js"
-import { upload } from "../config/multerConfig.js"
+import React from 'react'
 
-let userRouter = express.Router()
+const JobTracker = () => {
+  return (
+    <div>
+      <h1>this is job tracker</h1>
+    </div>
+  )
+}
 
-userRouter.get("/test", test)
-
-userRouter.post("/register", handleUserRegister)
-
-userRouter.post("/verify-otp", handleOTPVerification)
-
-userRouter.post("/user-login", handleUserLogin)
-
-userRouter.post("/password-reset-request", handleResetPasswordRequest)
-
-userRouter.post("/verify-reset-password-request", handleOTPForPasswordReset)
-
-// to upload resume/profie/docs we need to verfiy the user
-
-userRouter.post("/upload-file/:file_type", AuthUser, upload.single("file"), handleUserFileUpload)
-// only profile_picture and resume
-
-userRouter.get("/fetch-urser-profile", AuthUser, fetchProfile)
-
-export { userRouter }
+export default JobTracker
