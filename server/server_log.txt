@@ -57,3 +57,12 @@
 [5176] 20 Nov 21:29:44.705 * The server is now ready to accept connections on port 6379
 [4360] 21 Nov 11:48:26.848 # Creating Server TCP listening socket 127.0.0.1:6379: bind: No error
 [5168] 21 Nov 12:31:09.102 # Creating Server TCP listening socket 127.0.0.1:6379: bind: No error
+[5488] 21 Nov 15:06:52.308 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 5488 ready to start.
+[5488] 21 Nov 15:06:52.321 # Server started, Redis version 3.2.100
+[5488] 21 Nov 15:06:52.337 * DB loaded from disk: 0.014 seconds
+[5488] 21 Nov 15:06:52.345 * The server is now ready to accept connections on port 6379
+[5296] 25 Nov 20:49:47.479 # Creating Server TCP listening socket 127.0.0.1:6379: bind: No error
+[5592] 26 Nov 22:43:09.720 * Redis 3.2.100 (00000000/0) 64 bit, standalone mode, port 6379, pid 5592 ready to start.
+[5592] 26 Nov 22:43:09.732 # Server started, Redis version 3.2.100
+[5592] 26 Nov 22:43:09.734 * DB loaded from disk: 0.001 seconds
+[5592] 26 Nov 22:43:09.735 * The server is now ready to accept connections on port 6379
